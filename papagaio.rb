@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler'
 
-Bundler.require
+Bundler.require :scheduler
 
 require 'os_functions'
 
