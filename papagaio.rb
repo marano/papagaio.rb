@@ -15,11 +15,10 @@ def say line
   end
 end
 
-lines = File.readlines 'lines.txt'
-
 scheduler = Rufus::Scheduler.start_new
 
 scheduler.every '5m' do
+  lines = File.readlines 'lines.txt'
   lines.empty? and return
   say lines[rand(lines.size)]
 end
