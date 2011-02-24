@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>papagaio.rb</title>
+  </head>
+  <body>
+    <form action'/lines' method='POST' >
+      <label>New line</label> <input type='text' name='body' style='width: 250px;' /> <input type='submit'>Say it!</input>
+    </form>
+    <ul>
+    <% lines.each_with_index do |line, index| %>
+      <li><%= line %>
+      <form name='remove<%= index %>' style='display: inline;' action='/lines/<%= index %>' method='POST'>
+          <input type='hidden' name='_method' value='DELETE' />
+          <a href='#' onclick='document.remove<%= index %>.submit();'>remove</a>
+        </form>
+      </li>
+    <% end %>
+    </ul>
+  </body>
+</html>
+
