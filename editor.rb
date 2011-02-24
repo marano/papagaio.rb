@@ -5,6 +5,10 @@ Bundler.require :editor
 
 require 'erb'
 
+require 'speaker'
+
+include Speaker
+
 set :app_file, __FILE__
 
 get '/' do
@@ -16,6 +20,7 @@ get '/lines' do
 end
 
 post '/lines' do
+  say params[:body]
   save_to_file([ params[:body] ]  << lines_from_file)
   redirect '/lines'
 end
