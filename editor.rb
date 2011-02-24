@@ -20,7 +20,7 @@ get '/lines' do
 end
 
 post '/lines' do
-  say params[:body]
+  #say params[:body]
   save_to_file([ params[:body] ]  << lines_from_file)
   redirect '/lines'
 end
