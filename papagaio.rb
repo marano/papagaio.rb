@@ -5,11 +5,7 @@ Bundler.require
 
 require 'os_functions'
 
-scheduler = Rufus::Scheduler.start_new
-
 include OsFunctions
-
-lines = File.readlines 'lines.txt'
 
 def say line
   if is_mac?
@@ -19,8 +15,13 @@ def say line
   end
 end
 
-scheduler.every '5s' do
-  say "alo"
+lines = File.readlines 'lines.txt'
+
+scheduler = Rufus::Scheduler.start_new
+
+scheduler.every '5m' do
+  lines.empty? and return
+  say lines[rand(lines.size)]
 end
 
 scheduler.join
